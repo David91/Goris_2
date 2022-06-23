@@ -1,6 +1,7 @@
 package sixpm.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,8 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class ProductsPage {
-    private WebDriver driver;
+public class ProductsPage extends BasePage {
 
     private final String productsLocStr = "#products>article";
     private By productLoc = By.cssSelector(productsLocStr);
@@ -24,8 +24,7 @@ public class ProductsPage {
     private WebElement searchResultHeader;
 
     public ProductsPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void waitForPageLoad() {

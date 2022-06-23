@@ -15,13 +15,19 @@ public class TestSearch {
     public void testSearchFunctionality() {
         DriverFactory.initDriver(BrowserType.CHROME);
         HomePage homePage = new HomePage(DriverFactory.getDriver()).openPage();
-        final String searchText = "Sneakers";
+        final String searchText = "Glass";
         homePage.waitForPageLoad();
         homePage.searchFor(searchText);
         ProductsPage productsPage = new ProductsPage(DriverFactory.getDriver());
         productsPage.waitForPageLoad();
 
         Assert.assertEquals(productsPage.getSearchResultHeaderText(), searchText);
+
+        String secondSearchText = "Sneakers";
+        productsPage.searchFor(secondSearchText);
+        productsPage.waitForPageLoad();
+
+        Assert.assertEquals(productsPage.getSearchResultHeaderText(), secondSearchText);
     }
 
     @AfterMethod
